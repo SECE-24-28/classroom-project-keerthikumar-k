@@ -1,0 +1,226 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta-name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAR Palace</title>
+
+    <!-- Stylish Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('bccar.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        /* HEADER SECTION */
+        header {
+            text-align: center;
+            padding: 25px;
+            background: rgba(0,0,0,0.7);
+        }
+
+        header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 45px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        /* TOP BUTTONS */
+        .top-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .top-buttons button {
+            padding: 8px 18px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .top-buttons button:hover {
+            background: #005fcc;
+        }
+
+        /* LOGIN BOX */
+        .login-box {
+            margin: 120px auto;
+            width: 350px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .login-box input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: none;
+            font-size: 16px;
+        }
+
+        /* HOME SECTION */
+        .home-section, .cars-section {
+            display: none;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .home-section p {
+            background: rgba(0,0,0,0.6);
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            margin: auto;
+            font-size: 18px;
+        }
+
+        /* CAR CARDS */
+        .car-card {
+            background: white;
+            width: 250px;
+            padding: 15px;
+            margin: 15px;
+            border-radius: 10px;
+            color: black;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+        }
+
+        .car-card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .add-btn {
+            margin-top: 8px;
+            padding: 8px 12px;
+            background: #28a745;
+            border: none;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .add-btn:hover {
+            background: #1e7e34;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>CAR Palace</h1>
+
+    <div class="top-buttons">
+        <button onclick="showLoginBox()">Login</button>
+        <button id="cartBtn" style="display:none;" onclick="showCart()">Cart</button>
+        <button onclick="showHome()">Home</button>
+    </div>
+</header>
+
+<!-- HOME CONTENT -->
+<div class="home-section" id="homeSection">
+    <h2>Welcome to CAR Palace</h2>
+    <p>
+        CAR Palace offers a premium experience for exploring luxury cars.
+        Choose your dream car and add it to your cart for later viewing.
+    </p>
+</div>
+
+<!-- LOGIN BOX -->
+<div class="login-box" id="loginBox" style="display:none;">
+    <h2>Login</h2>
+    <input type="text" placeholder="Enter Name">
+    <input type="text" placeholder="Enter Phone Number">
+    <input type="email" placeholder="Enter Email">
+    <button class="login-btn" onclick="showCars()">Submit</button>
+</div>
+
+<!-- CAR MODELS -->
+<div class="cars-section" id="cars">
+
+    <div class="car-card">
+        <img src="car1.jpg" alt="Car 1">
+        <h3>BMW X5</h3>
+        <div class="price">$25,000</div>
+        <button class="add-btn" onclick="addToCart('SWIFT')">Add to Cart</button>
+    </div>
+
+    <div class="car-card">
+        <img src="car2.jpg" alt="Car 2">
+        <h3>Audi A6</h3>
+        <div class="price">$32,000</div>
+        <button class="add-btn" onclick="addToCart('SCORPIO N')">Add to Cart</button>
+    </div>
+
+    <div class="car-card">
+        <img src="car3.jpg" alt="Car 3">
+        <h3>Mercedes C-Class</h3>
+        <div class="price">$45,000</div>
+        <button class="add-btn" onclick="addToCart('THAR')">Add to Cart</button>
+    </div>
+</div>
+
+<script>
+    let cart = [];
+
+    function hideAll() {
+        document.getElementById('loginBox').style.display = 'none';
+        document.getElementById('cars').style.display = 'none';
+        document.getElementById('homeSection').style.display = 'none';
+    }
+
+    function showLoginBox() {
+        hideAll();
+        document.getElementById('loginBox').style.display = 'block';
+    }
+
+    function showCars() {
+        hideAll();
+        document.getElementById('cars').style.display = 'block';
+    }
+
+    function showHome() {
+        hideAll();
+        document.getElementById('homeSection').style.display = 'block';
+    }
+
+    function addToCart(carName) {
+        cart.push(carName);
+        alert(carName + " added to cart!");
+        document.getElementById('cartBtn').style.display = 'inline-block';
+    }
+
+    function showCart() {
+        alert("Items in Cart:\n" + cart.join("\n"));
+    }
+</script>
+
+</body>
+</html>

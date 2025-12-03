@@ -1,0 +1,122 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Application Form</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 420px;
+            background: white;
+            padding: 20px;
+            margin: 60px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="file"] {
+            width: 100%;
+            height: 40px;
+            padding: 8px 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        /* Small spacing between checkboxes */
+        .checkbox-group label {
+            font-weight: normal;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #005fcc;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Job Application</h2>
+
+    <form action="thankyou.html" method="get">
+
+        <label>Full Name</label>
+        <input type="text" name="fullname" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Phone Number</label>
+        <input type="tel" name="phone" required>
+
+        <label>Position Applying For</label>
+        <input type="text" name="position" required>
+
+        <label>Known Programming Languages</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="languages" value="HTML"> HTML</label><br>
+            <label><input type="checkbox" name="languages" value="CSS"> CSS</label><br>
+            <label><input type="checkbox" name="languages" value="JavaScript"> JavaScript</label><br>
+            <label><input type="checkbox" name="languages" value="Python"> Python</label><br>
+            <label><input type="checkbox" name="languages" value="Java"> Java</label><br>
+            <label><input type="checkbox" name="languages" value="C"> C</label><br>
+            <label><input type="checkbox" name="languages" value="C++"> C++</label><br>
+            <label><input type="checkbox" name="languages" value="SQL"> SQL</label><br>
+        </div>
+
+        <label>Upload Resume (PDF Only)</label>
+        <input type="file" accept="application/pdf" required>
+
+        <button type="submit">Submit Application</button>
+
+    </form>
+</div>
+
+</body>
+</html>
