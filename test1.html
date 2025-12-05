@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JOB APPLICATION FORM</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f2f2f2;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            width: 350px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0 12px;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #4CAF50;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        #errorBox {
+            color: red;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        #successBox {
+            color: green;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<form id="myForm" enctype="multipart/form-data">
+    <h2>Simple Form Validation</h2>
+
+    <div id="errorBox"></div>
+    <div id="successBox"></div>
+
+    <label>Name:</label>
+    <input type="text" id="name">
+
+    <label>Email:</label>
+    <input type="text" id="email">
+
+    <label>Password:</label>
+    <input type="password" id="password">
+
+    <label>Age:</label>
+    <input type="number" id="age">
+
+    <label>Message:</label>
+    <textarea id="message"></textarea>
+
+    <label>Upload Resume:</label>
+    <input type="file" id="resume">
+
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    document.getElementById("myForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        let name = document.getElementById("name").value.trim();
+
+        let email = document.getElementById("email").value.trim();
+
+        let password = document.getElementById("password").value.trim();
+
+        let age = document.getElementById("age").value.trim();
+
+        let message = document.getElementById("message").value.trim();
+        
+        let resume = document.getElementById("resume").files[0]; 
+
+        let errors = [];
+
+        document.getElementById("errorBox").innerHTML = "";
+        document.getElementById("successBox").innerHTML = "";
+
+        
+        if (!name) errors.push("Name is required");
+        if (!email) errors.push("Email is required");
+        if (!password) errors.push("Password is required");
+        if (!resume) errors.push("Resume upload is required");
+
+       
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email && !emailPattern.test(email)) {
+            errors.push("Invalid email format");
+        }
+
+        if (password && password.length < 6) {
+            errors.push("Password must be at least 6 characters long");
+        }
+
+       
+        if (errors.length > 0) {
+            document.getElementById("errorBox").innerHTML = errors.join("<br>");
+        } else {
+            document.getElementById("successBox").innerHTML = "Form submitted successfully!";
+        }
+    });
+</script>
+
+</body>
+</html>
